@@ -943,7 +943,7 @@ static struct wcd9xxx_pdata apq8064_tabla20_platform_data = {
 	.micbias = {
 		.ldoh_v = TABLA_LDOH_2P85_V,
 		.cfilt1_mv = 1800,
-		.cfilt2_mv = 1800,
+		.cfilt2_mv = 2700,
 		.cfilt3_mv = 1800,
 		.bias1_cfilt_sel = TABLA_CFILT1_SEL,
 		.bias2_cfilt_sel = TABLA_CFILT2_SEL,
@@ -1290,7 +1290,7 @@ static struct mdm_vddmin_resource mdm_vddmin_rscs = {
 
 static struct gpiomux_setting mdm2ap_status_gpio_run_cfg = {
 	.func = GPIOMUX_FUNC_GPIO,
-	.drv = GPIOMUX_DRV_8MA,
+	.drv = GPIOMUX_DRV_2MA,
 	.pull = GPIOMUX_PULL_NONE,
 };
 
