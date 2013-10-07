@@ -41,7 +41,7 @@
 #define AMP_SET_DATA	_IOW(AMP_IOCTL_MAGIC, 0, struct amp_cal *)
 #define AMP_GET_DATA	_IOW(AMP_IOCTL_MAGIC, 1, struct amp_cal *)
 
-static uint32_t msm_snd_debug = 1;
+static uint32_t msm_snd_debug = 0;
 module_param_named(debug_mask, msm_snd_debug, uint, 0664);
 
 #if defined (AMP_DEBUG_PRINT)
@@ -122,6 +122,9 @@ int tpa2028d_poweron(void)
 	fail |= WriteI2C(AGC2_CONTROL,
 		AGC_Max_Gain|agc_compression_rate); /*Tuen On*/
 	fail |= WriteI2C(IC_CONTROL, 0xC3); /*Tuen On*/
+	fail |= WriteI2C(AGC_ATTACK_CONTROL, atk_time);
+	fail |= WriteI2C(AGC_RELEASE_CONTROL, rel_time);
+	fail |= WriteI2C(AGC2_CONTROL, max_gain);
 
 	return fail;
 }
