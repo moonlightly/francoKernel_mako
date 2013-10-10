@@ -34,10 +34,10 @@
 #define AGC_COMPRESIION_RATE        0
 #define AGC_OUTPUT_LIMITER_DISABLE  1
 #define AGC_FIXED_GAIN              12
-#define AGC_ATK_TIME			30
-#define AGC_REL_TIME			250
+#define AGC_ATK_TIME			6
+#define AGC_REL_TIME			14
 #define AGC_HOLD_TIME			0
-#define AGC_OUTPUT_LIMIT_LEVEL		1
+#define AGC_OUTPUT_LIMIT_LEVEL		26
 #define AGC_MAX_GAIN			12
 #define AGC_NOISE_GATE_THRESHOLD	1
 
