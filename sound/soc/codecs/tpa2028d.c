@@ -122,9 +122,6 @@ int tpa2028d_poweron(void)
 	fail |= WriteI2C(AGC2_CONTROL,
 		AGC_Max_Gain|agc_compression_rate); /*Tuen On*/
 	fail |= WriteI2C(IC_CONTROL, 0xC3); /*Tuen On*/
-	fail |= WriteI2C(AGC_ATTACK_CONTROL, atk_time);
-	fail |= WriteI2C(AGC_RELEASE_CONTROL, rel_time);
-	fail |= WriteI2C(AGC2_CONTROL, max_gain);
 
 	return fail;
 }
