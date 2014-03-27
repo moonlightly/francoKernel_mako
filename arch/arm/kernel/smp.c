@@ -250,7 +250,6 @@ asmlinkage void __cpuinit secondary_start_kernel(void)
 	pr_debug("CPU%u: Booted secondary processor\n", cpu);
 
 	cpu_init();
-
 	preempt_disable();
 	trace_hardirqs_off();
 
@@ -304,7 +303,6 @@ void __init smp_cpus_done(unsigned int max_cpus)
 
 void __init smp_prepare_boot_cpu(void)
 {
-	set_my_cpu_offset(per_cpu_offset(smp_processor_id()));
 }
 
 void __init smp_prepare_cpus(unsigned int max_cpus)
@@ -640,9 +638,9 @@ void smp_send_stop(void)
 		smp_cross_call(&mask, IPI_CPU_STOP);
 
 	/* Wait up to one second for other CPUs to stop */
-	timeout = USEC_PER_SEC;
+	timeout = MSEC_PER_SEC;
 	while (num_active_cpus() > 1 && timeout--)
-		udelay(1);
+		mdelay(1);
 
 	if (num_active_cpus() > 1)
 		pr_warning("SMP: failed to stop secondary CPUs\n");
